@@ -1,11 +1,12 @@
 import { Game } from "../../src/game/game"
 import { Frame } from "../../src/types/frame"
+import { Player } from "../../src/types/player"
 
 
 const makeSut = ():Game => { 
     const frame:Frame[] = []
-    // for(let i = 0; i<9;i++) frame.push(new Frame(i))
-   const game = new Game([
+    const playerOne = new Player('player-one-id','player-one')
+    const game = new Game([
     new Frame(0),
     new Frame(1),
     new Frame(2),
@@ -15,7 +16,7 @@ const makeSut = ():Game => {
     new Frame(6),
     new Frame(7),
     new Frame(8)
-   ])
+   ], playerOne)
 
     return game
 }
@@ -32,5 +33,9 @@ describe('Game Class', () => {
     test('Should ensure that frame array is from type Frame', () => {
         const sut = makeSut()
         expect(sut.getFrame[0]).toBeInstanceOf(Frame)
+    })
+    test('Should that playeOne exists when game started', () => {
+        const sut = makeSut()
+        expect(sut.getPlayerOne).toBeTruthy()
     })
 })
