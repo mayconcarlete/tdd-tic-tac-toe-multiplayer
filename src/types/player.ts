@@ -6,4 +6,7 @@ export class Player {
     get getPlayer(){
         return this
     }
+    get getPlayerId(){
+        return this.id
+    }
 }
