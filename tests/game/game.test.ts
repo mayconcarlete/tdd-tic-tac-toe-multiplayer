@@ -6,6 +6,7 @@ import { Player } from "../../src/types/player"
 const makeSut = ():Game => { 
     const frame:Frame[] = []
     const playerOne = new Player('player-one-id','player-one')
+    const playerTwo = new Player('player-two-id', 'player-two')
     const game = new Game([
     new Frame(0),
     new Frame(1),
@@ -16,7 +17,7 @@ const makeSut = ():Game => {
     new Frame(6),
     new Frame(7),
     new Frame(8)
-   ], playerOne)
+   ], playerOne, playerTwo)
 
     return game
 }
@@ -34,8 +35,12 @@ describe('Game Class', () => {
         const sut = makeSut()
         expect(sut.getFrame[0]).toBeInstanceOf(Frame)
     })
-    test('Should that playeOne exists when game started', () => {
+    test('Should ensure that playeOne exists when game started', () => {
         const sut = makeSut()
         expect(sut.getPlayerOne).toBeTruthy()
+    })
+    test('Should ensure that playerTwo exists when game started', () => {
+        const sut = makeSut()
+        expect(sut.getPlayerTwo).toBeTruthy()
     })
 })
