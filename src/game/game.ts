@@ -3,7 +3,7 @@ import { Frame } from "../types/frame";
 import { Player } from "../types/player";
 
 export class Game {
-    private startPlayer: string = '' 
+    private startPlayer: string | undefined = undefined
     constructor(
         private readonly frame:Frame[],
         private readonly playerOne: Player,
@@ -23,8 +23,9 @@ export class Game {
         return this.startPlayer
     }
     setDrawTheFirstPlayer():void{
-        this.startPlayer = this
-            .drawPlayer
-            .makeDraw([this.getPlayerOne.getPlayerId, this.getPlayerTwo.getPlayerId])
+        if(this.startPlayer === undefined)
+            this.startPlayer = this
+                .drawPlayer
+                .makeDraw([this.getPlayerOne.getPlayerId, this.getPlayerTwo.getPlayerId])
     }
 }
