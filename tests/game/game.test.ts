@@ -55,13 +55,14 @@ describe('Game Class', () => {
     test('Should return player-one-id when draw return number 0', () => {
         const {sut, drawPlayerStub} = makeSut()
         drawPlayerStub.position = 0
-        const firstPlayerToPlay = sut.getTheFirstPlayer()
-        expect(firstPlayerToPlay).toBe('player-one-id')
+        const firstPlayerToPlay = sut.setDrawTheFirstPlayer()
+        expect(sut.getDrawnPlayer).toBe('player-one-id')
     })
     test('Should return player-two-id when draw return number 1', () => {
         const {sut, drawPlayerStub} = makeSut()
         drawPlayerStub.position = 1
-        const firstPlayerToPlay = sut.getTheFirstPlayer()
-        expect(firstPlayerToPlay).toBe('player-two-id')
+        const firstPlayerToPlay = sut.setDrawTheFirstPlayer()
+        expect(sut.getDrawnPlayer).toBe('player-two-id')
     })
+
 })
