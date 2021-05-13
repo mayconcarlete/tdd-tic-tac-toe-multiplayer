@@ -3,11 +3,12 @@ import { Frame } from "../types/frame";
 import { Player } from "../types/player";
 
 export class Game {
+    private startPlayer: string = '' 
     constructor(
         private readonly frame:Frame[],
         private readonly playerOne: Player,
         private readonly playerTwo: Player,
-        private readonly drawPlayer: DrawPlayer 
+        private readonly drawPlayer: DrawPlayer ,
     ){}
     get getFrame(){
         return this.frame
@@ -18,8 +19,11 @@ export class Game {
     get getPlayerTwo(){
         return this.playerTwo
     }
-    getTheFirstPlayer():string{
-        return this
+    get getDrawnPlayer(){
+        return this.startPlayer
+    }
+    setDrawTheFirstPlayer():void{
+        this.startPlayer = this
             .drawPlayer
             .makeDraw([this.getPlayerOne.getPlayerId, this.getPlayerTwo.getPlayerId])
     }
