@@ -1,9 +1,9 @@
 import { DrawPlayer } from "../interfaces/draw-player";
-import { Frame } from "../types/frame";
-import { Player } from "../types/player";
+import { Frame, Player,Movement  } from "../types";
 
 export class Game {
     private startPlayer: string | undefined = undefined
+    private movementHistory: Movement[] = [] 
     constructor(
         private readonly frame:Frame[],
         private readonly playerOne: Player,
@@ -22,10 +22,16 @@ export class Game {
     get getDrawnPlayer(){
         return this.startPlayer
     }
+    get getMovimentHistory(){
+        return this.movementHistory
+    }
     setDrawTheFirstPlayer():void{
         if(this.startPlayer === undefined)
             this.startPlayer = this
                 .drawPlayer
                 .makeDraw([this.getPlayerOne.getPlayerId, this.getPlayerTwo.getPlayerId])
+    }
+    makeMovement(movement:Movement){
+        this.movementHistory.push(movement)
     }
 }
