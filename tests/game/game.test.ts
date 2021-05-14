@@ -1,5 +1,6 @@
 import { Game } from "../../src/game/game"
 import { DrawPlayer } from "../../src/interfaces/draw-player"
+import { Movement } from "../../src/types"
 import { Frame } from "../../src/types/frame"
 import { Player } from "../../src/types/player"
 import { DrawPlayerStub } from "../stubs/draw-player"
@@ -72,9 +73,14 @@ describe('Game Class', () => {
         sut.setDrawTheFirstPlayer()
         expect(sut.getDrawnPlayer).toBe('player-two-id')
     })
-    // test('Should first play was played by drawn player', () =>{
-    //     const {sut, drawPlayerStub} = makeSut()
-    //     drawPlayerStub.position = 1
-    //     const 
-    // })
+    test('Should add movement on history', () => {
+        const {sut, drawPlayerStub} = makeSut()
+        const movement:Movement = {
+            id: 'player-two-id',
+            movement: 1
+        }
+        sut.makeMovement(movement)
+        const movementHistory = sut.getMovimentHistory
+        expect(movementHistory).toHaveLength(1)
+    })
 })
