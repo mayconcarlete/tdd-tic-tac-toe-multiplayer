@@ -41,10 +41,20 @@ export class Game {
                 history:this.movementHistory
             }        
         }
-        return {
-            status:false,
-            movement:movement.movement,
-            history:this.movementHistory
+        else if(this.movementHistory.length > 0 && this.movementHistory[this.movementHistory.length-1].id === movement.id){
+            return {
+                status:false,
+                movement:movement.movement,
+                history:this.movementHistory
+            }
+        }
+        else{
+            this.movementHistory.push(movement)
+            return {
+                status:true ,
+                movement:movement.movement,
+                history:this.movementHistory
+            }
         }   
     }
 }
