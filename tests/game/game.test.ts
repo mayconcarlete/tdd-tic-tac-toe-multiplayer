@@ -111,4 +111,16 @@ describe('Game Class', () => {
         const secondMovementResult = sut.makeMovement(secondMovement)
         expect(secondMovementResult.status).toBeTruthy()
     })
+    test('Should not makeMovement add movement when incorrect player call', () => {
+        const {sut, drawPlayerStub} = makeSut()
+        drawPlayerStub.position = 1
+        sut.setDrawTheFirstPlayer()
+        const movement:Movement = { 
+            id: 'player-two-id',
+            movement:1
+        }
+        sut.makeMovement(movement)
+       const secondMovement = sut.makeMovement(movement)
+       expect(secondMovement.status).toBeFalsy()
+    })
 })
