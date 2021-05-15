@@ -74,7 +74,7 @@ describe('Game Class', () => {
         expect(sut.getDrawnPlayer).toBe('player-two-id')
     })
     test('Should add movement on history', () => {
-        const {sut, drawPlayerStub} = makeSut()
+        const {sut} = makeSut()
         const movement:Movement = {
             id: 'player-two-id',
             movement: 1
@@ -82,5 +82,17 @@ describe('Game Class', () => {
         sut.makeMovement(movement)
         const movementHistory = sut.getMovimentHistory
         expect(movementHistory).toHaveLength(1)
+    })
+    test('Should take movement from startPlayer when movementHistory is empty', () => {
+        const {sut, drawPlayerStub} = makeSut()
+        drawPlayerStub.position = 1
+        sut.setDrawTheFirstPlayer()
+        const movement:Movement = { 
+            id: 'player-two-id',
+            movement:1
+        } 
+        const movementResult = sut.makeMovement(movement)
+        console.log(sut.getDrawnPlayer)
+        expect(movementResult.status).toBeTruthy()
     })
 })
