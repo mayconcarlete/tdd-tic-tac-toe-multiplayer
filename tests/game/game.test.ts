@@ -95,4 +95,20 @@ describe('Game Class', () => {
         console.log(sut.getDrawnPlayer)
         expect(movementResult.status).toBeTruthy()
     })
+    test('Should makeMovement add movement only when correct player call', () => {
+        const {sut, drawPlayerStub} = makeSut()
+        drawPlayerStub.position = 1
+        sut.setDrawTheFirstPlayer()
+        const movement:Movement = { 
+            id: 'player-two-id',
+            movement:1
+        }
+        sut.makeMovement(movement)
+        const secondMovement:Movement = { 
+            id: 'player-one-id',
+            movement:1
+        }
+        const secondMovementResult = sut.makeMovement(secondMovement)
+        expect(secondMovementResult.status).toBeTruthy()
+    })
 })
