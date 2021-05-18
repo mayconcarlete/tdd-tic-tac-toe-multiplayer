@@ -1,19 +1,15 @@
 import { DrawPlayer } from "../interfaces/draw-player";
-import { Frame, Player,Movement  } from "../types";
+import { Player,Movement  } from "../types";
 import { MovementResponse } from "../types/movement-response";
 
 export class Game {
     private startPlayer: string | undefined = undefined
     private movementHistory: Movement[] = [] 
     constructor(
-        private readonly frame:Frame[],
         private readonly playerOne: Player,
         private readonly playerTwo: Player,
         private readonly drawPlayer: DrawPlayer ,
     ){}
-    get getFrame(){
-        return this.frame
-    }
     get getPlayerOne(){
         return this.playerOne
     }
