@@ -1,4 +1,4 @@
-export type Movement = {
-    id: string,
+export type Play = {
+    player: number,
     movement: number
 }
