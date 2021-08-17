@@ -6,8 +6,9 @@ export class Game {
     private historyPlays:Play[] = []
     constructor(){}
     
-    set_play(play:Play):void{
+    set_play(play:Play):boolean{
         this.historyPlays.push(play)
+        return true
     }
 
     get history(){
