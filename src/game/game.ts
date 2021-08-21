@@ -1,17 +1,22 @@
-import { DrawPlayer } from "../interfaces/draw-player";
-import { Player,Play  } from "../types";
-import { MovementResponse } from "../types/movement-response";
+import { Play  } from "../types";
 
 export class Game {
     private historyPlays:Play[] = []
     constructor(){}
     
     set_play(play:Play):boolean{
-        this.historyPlays.push(play)
-        return true
+        if(this.isHistoryPlaysNotFull()){
+            this.historyPlays.push(play)
+            return true
+        }
+        return false
     }
 
     get history(){
         return this.historyPlays
+    }
+
+    isHistoryPlaysNotFull(){
+        return this.historyPlays.length < 9 ? true: false
     }
 }
