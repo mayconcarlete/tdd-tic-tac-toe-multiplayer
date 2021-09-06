@@ -1,4 +1,5 @@
 import { Game } from "../../src/game/game"
+import { Play } from "../../src/types"
 
 describe('Test Game class', () => {
     test('Should set play in history when play is called', () => {
@@ -22,5 +23,12 @@ describe('Test Game class', () => {
         }
         expect(sut.history.length).toBe(9)
     })
-    test
+    test('Should not allow do twice plays in same position', () => {
+        const sut = new Game()
+        const play1:Play = {
+            player:0,
+            movement:0
+        } 
+        
+    })
 })
