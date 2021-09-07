@@ -19,16 +19,22 @@ describe('Test Game class', () => {
         const numberOfPlays = 10
         for(let i = 0; i < numberOfPlays; i++){
             const player = i%0 == 0 ? 0: 1 
-            sut.set_play({player, movement:1})
+            sut.set_play({player, movement:i})
         }
         expect(sut.history.length).toBe(9)
     })
     test('Should not allow do twice plays in same position', () => {
         const sut = new Game()
         const play1:Play = {
-            player:0,
-            movement:0
+            player: 0,
+            movement: 0
         } 
-        
+        const play2: Play = {
+            player: 1,
+            movement: 0
+        }
+        sut.set_play(play1)
+        const secondMovement = sut.set_play(play2)
+        expect(secondMovement).toBeFalsy()
     })
 })
