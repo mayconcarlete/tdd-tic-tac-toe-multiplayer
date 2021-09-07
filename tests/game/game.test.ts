@@ -2,30 +2,39 @@ import { Game } from "../../src/game/game"
 import { Play } from "../../src/types"
 import {horizontalFirstLine} from './constants'
 
+type SutTypes = {
+    sut: Game
+}
+
+const historyPlays = () => {
+    let history: number[] = []
+    for(let i = 0; i < 9; i++ ){
+        history.push(-1)
+    }
+    return history
+}
+
+const makeSut = (): SutTypes => {
+    const initialPlays = historyPlays()
+    const sut = new Game(initialPlays)
+    return { sut }
+}
+
 describe('Test Game class', () => {
     test('Should set play in history when play is called', () => {
-        const sut = new Game()
-        const play = {player:0, movement:0}
+        const { sut } = makeSut()
+        const play = { player: 0, movement: 0 }
         sut.set_play(play)
-        expect(sut.history[0]).toEqual(play)
+        expect(sut.history[0]).toBe(0)
     })
     test('Should return ok if set play is seted with success', () => {
-        const sut = new Game()
+        const { sut } = makeSut()
         const play = {player:0, movement:0}
         const newPlay = sut.set_play(play)
         expect(newPlay).toEqual('ok')
     })
-    test('Should stop when array of play is full', () => {
-        const sut = new Game()
-        const numberOfPlays = 10
-        for(let i = 0; i < numberOfPlays; i++){
-            const player = i%0 == 0 ? 0: 1 
-            sut.set_play({player, movement:i})
-        }
-        expect(sut.history.length).toBe(9)
-    })
     test('Should not allow do twice plays in same position', () => {
-        const sut = new Game()
+        const { sut } = makeSut()
         const play1:Play = {
             player: 0,
             movement: 0
