@@ -8,7 +8,7 @@ export class Game {
     set_play(play:Play):string {
         if(this.allowMadePlay(play)){
             this.historyPlays[play.movement] = play.player
-            if(this.isHorizontalVictory(play)){
+            if(this.isHorizontalVictory()){
                 return 'victory'
             }
             return 'ok'
@@ -28,10 +28,10 @@ export class Game {
         return this.historyPlays[position] === undefined ? true : false
     }
 
-    isHorizontalVictory(play: Play):boolean{
-        for(let i = 0; i < 3; i++){
-            if(this.historyPlays[i] !== play.player) return false
-        }
-        return true
+    isHorizontalVictory(): boolean{
+        if(this.historyPlays[0] !== -1 && this.historyPlays[0] === this.historyPlays[1] && this.historyPlays[0] === this.historyPlays[2]) return true
+        if(this.historyPlays[3] !== -1 && this.historyPlays[3] === this.historyPlays[4] && this.historyPlays[3] === this.historyPlays[5]) return true
+        if(this.historyPlays[6] !== -1 && this.historyPlays[6] === this.historyPlays[7] && this.historyPlays[6] === this.historyPlays[8]) return true
+        return false
     }
 }
