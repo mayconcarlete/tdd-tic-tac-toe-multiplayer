@@ -1,6 +1,6 @@
 import { Game } from "../../src/game/game"
 import { Play } from "../../src/types"
-import {horizontalFirstLine, horizontalSecondLine, horizontalThirdLine, verticalFirstLane, verticalSecondLane} from './constants'
+import {horizontalFirstLine, horizontalSecondLine, horizontalThirdLine, verticalFirstLane, verticalSecondLane, verticalThirdLane} from './constants'
 
 type SutTypes = {
     sut: Game
@@ -47,49 +47,62 @@ describe('Test Game class', () => {
         const secondMovement = sut.set_play(play2)
         expect(secondMovement).toEqual('error')
     })
-    test('Should return victory when player won in horizontal lanes', () => {
-        const sut = new Game(horizontalFirstLine)
-        const play: Play =    {
-            player: 0,
-            movement: 2
-        }
-        const result = sut.set_play(play)
-        expect(result).toEqual('victory')
+    describe('Victory tests in horizontal lanes', () => {
+        test('Should return victory when player won in horizontal lanes', () => {
+            const sut = new Game(horizontalFirstLine)
+            const play: Play =    {
+                player: 0,
+                movement: 2
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
+        test('Should return victory when player won in second horizontal lanes', () => {
+            const sut = new Game(horizontalSecondLine)
+            const play:Play = {
+                player: 0,
+                movement: 5
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
+        test('Should return victory when player won in third horizontal lane', () => {
+            const sut = new Game(horizontalThirdLine)
+            const play:Play = {
+                player: 0,
+                movement: 8
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
     })
-    test('Should return victory when player won in second horizontal lanes', () => {
-        const sut = new Game(horizontalSecondLine)
-        const play:Play = {
-            player: 0,
-            movement: 5
-        }
-        const result = sut.set_play(play)
-        expect(result).toEqual('victory')
-    })
-    test('Should return victory when player won in third horizontal lane', () => {
-        const sut = new Game(horizontalThirdLine)
-        const play:Play = {
-            player: 0,
-            movement: 8
-        }
-        const result = sut.set_play(play)
-        expect(result).toEqual('victory')
-    })
-    test('Should return victory when player won in first vertical lane', () => {
-        const sut = new Game(verticalFirstLane)
-        const play:Play = {
-            player: 1,
-            movement: 6
-        }
-        const result = sut.set_play(play)
-        expect(result).toEqual('victory')
-    })
-    test('Should return victory when player won in second vertical lane', () => {
-        const sut = new Game(verticalSecondLane)
-        const play:Play = {
-            player: 1,
-            movement: 7
-        } 
-        const result = sut.set_play(play)
-        expect(result).toEqual('victory')
+    describe('Victory tests in vertical lanes', () => {
+        test('Should return victory when player won in first vertical lane', () => {
+            const sut = new Game(verticalFirstLane)
+            const play:Play = {
+                player: 1,
+                movement: 6
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
+        test('Should return victory when player won in second vertical lane', () => {
+            const sut = new Game(verticalSecondLane)
+            const play:Play = {
+                player: 1,
+                movement: 7
+            } 
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
+        test('Should return victory when player won in third vertical lane', () => {
+            const sut = new Game(verticalThirdLane)
+            const play:Play = {
+                player: 1,
+                movement: 8
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
     })
 })
