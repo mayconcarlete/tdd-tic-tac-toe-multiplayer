@@ -39,6 +39,7 @@ export class Game {
         if(this.historyPlays[2] !== -1 && this.historyPlays[2] === this.historyPlays[5] && this.historyPlays[2] === this.historyPlays[8]) return true
         // test for diagonal lanes
         if(this.historyPlays[0] !== -1 && this.historyPlays[0] === this.historyPlays[4] && this.historyPlays[0] === this.historyPlays[8]) return true
+        if(this.historyPlays[2] !== -1 && this.historyPlays[2] === this.historyPlays[4] && this.historyPlays[2] === this.historyPlays[6]) return true
         return false
     }
 }

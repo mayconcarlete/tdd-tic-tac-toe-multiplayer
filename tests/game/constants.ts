@@ -7,3 +7,4 @@ export const verticalSecondLane: number[] = [-1, 1, -1, -1, 1, -1, -1, -1, -1]
 export const verticalThirdLane: number[] = [-1, -1, 1, -1, -1, 1, -1, -1, -1]
 
 export const diagonalOneLane: number[] = [1, -1, -1, -1, 1, -1, -1, -1, -1]
+export const diagonalSecondLane: number[] = [-1, -1, 0, -1, 0, -1, -1, -1, -1]
