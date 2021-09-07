@@ -1,12 +1,1 @@
-import { Play } from "../../src/types";
-
-export const horizontalFirstLine: Play[] = [
-    {
-        player: 0,
-        movement: 0
-    },
-    {
-        player: 0,
-        movement: 1
-    }
-] 
+export const horizontalFirstLine: number[] = [0, 0, -1, -1, -1, -1, -1, -1, -1] 
