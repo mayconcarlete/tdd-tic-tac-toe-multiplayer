@@ -24,10 +24,6 @@ export class Game {
         return this.historyPlays[play.movement] === -1 ? true : false
     }
 
-    isEmpty(position: number): boolean {
-        return this.historyPlays[position] === undefined ? true : false
-    }
-
     isHorizontalVictory(): boolean{
         // test for horizontal lanes
         if(this.historyPlays[0] !== -1 && this.historyPlays[0] === this.historyPlays[1] && this.historyPlays[0] === this.historyPlays[2]) return true
