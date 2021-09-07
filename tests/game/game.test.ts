@@ -1,6 +1,6 @@
 import { Game } from "../../src/game/game"
 import { Play } from "../../src/types"
-import {horizontalFirstLine, horizontalSecondLine, horizontalThirdLine, verticalFirstLane, verticalSecondLane, verticalThirdLane} from './constants'
+import {diagonalOneLane, horizontalFirstLine, horizontalSecondLine, horizontalThirdLine, verticalFirstLane, verticalSecondLane, verticalThirdLane} from './constants'
 
 type SutTypes = {
     sut: Game
@@ -97,6 +97,17 @@ describe('Test Game class', () => {
         })
         test('Should return victory when player won in third vertical lane', () => {
             const sut = new Game(verticalThirdLane)
+            const play:Play = {
+                player: 1,
+                movement: 8
+            }
+            const result = sut.set_play(play)
+            expect(result).toEqual('victory')
+        })
+    })
+    describe('Victory test in diagonal lanes', () => {
+        test('Should return victory in diagonal one', () => {
+            const sut = new Game(diagonalOneLane)
             const play:Play = {
                 player: 1,
                 movement: 8
